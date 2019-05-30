@@ -37,10 +37,21 @@ class Profile(models.Model):
         return self.title
     
 class Business(models.Model):
-    business_name = models.CharField(max_length=200)
+    business = models.CharField(max_length=200)
     user = models.ForeignKey(User,on_delete=models.CASCADE) 
     business_email = models.EmailField(max_length=200)
     location = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE) 
+    
+    def create_business(self):
+        self.save()
+      
+    def delete_business(self):
+        self.delete()
+        
+    @classmethod
+    def search_by_business(cls,search_term):
+        businesses = cls.objects.filter(business__icontains=businesses)
+        return businesses
     
     
     def __str__(self):

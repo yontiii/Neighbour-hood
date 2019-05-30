@@ -20,10 +20,7 @@ class Neighbourhood(models.Model):
         hoods = cls.objects.filter(id=id)
         return hoods  
     
-    @classmethod
-    def update_neighbourhood(cls)
-    hood_update = cls.objects.filter(id=1).update(name='name')
-    return hood_update
+   
 
     def __str__(self):
         return self.name

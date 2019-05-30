@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 
 # Create your models here.
@@ -20,20 +22,41 @@ class Neighbourhood(models.Model):
     
     @classmethod
     def update_neighbourhood(cls)
-    hood_update = cls.objects.filter(name)
+    hood_update = cls.objects.filter(id=1).update(name='name')
+    return hood_update
+
+    def __str__(self):
+        return self.name
 
     
     
-class User(models.Model):
+class Profile(models.Model):
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     email = models.EmailField(max_length=200)
-    neighborhood = models.ForeignKey(Neighbourhood,null=True,blank=True) 
+    neighborhood = models.ForeignKey(Neighbourhood,null=True) 
+    
+    def __str__(self):
+        return self.title
     
 class Business(models.Model):
     business_name = models.CharField(max_length=200)
     user = models.ForeignKey(User,on_delete=models.CASCADE) 
     business_email = models.EmailField(max_length=200)
-    business_hood = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE) 
+    location = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE) 
+    
+    
+    def __str__(self):
+        return self.title
+    
+class Posts(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField(max_length=200)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    
+    
+    def __str__(self):
+        return self.title
  
     
     

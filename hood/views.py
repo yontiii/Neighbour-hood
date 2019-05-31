@@ -5,5 +5,6 @@ from .models import *
 
 # Create your views here.
 def index(request):
+    hoods = Neighbourhood.objects.all()
     
-    return render(request,'index.html')
+    return render(request,'index.html',{"hoods":hoods})

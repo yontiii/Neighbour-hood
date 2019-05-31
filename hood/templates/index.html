@@ -1,28 +1,33 @@
 {% extends 'base.html' %}
 <style>
-.text{
-    top:50%;
-    left:50%;
-    position: absolute;
-    transform: translate(-50,-50);
-    color: red;
-    text-decoration:underline;
-}
+    #test {
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50, -50);
+        color: red;
+        text-decoration: underline;
+        top: 80px;
+    }
+    body{
+        scroll-behavior: smooth;
+    }
 </style>
 {% block content %}
 <div class="index view overlay" style=" background-image: url(../static/img/land.jpg); 
 height:75vh;
 width:100%;overflow: hidden;background-size:cover;background-attachment: fixed">
-<div class="mask text-center rgba-grey-light" id="test">
-    <h3 style="">The Neighbourhood</h3>
-    <br>
-    <br>
-    <h4>know Your Hood</h4>
+
+    <div class="mask waves-effect waves light rgba-black-light mb-10" id="test">
+        <h3 class="pink-text font-weight-light">The Neighbourhood</h3>
+        <br>
+        <h4 class="white-text font-weight-light">know Your Hood</h4>
+        <br>
+        <a href="#home" class="btn btn-info mt-10">BROWSE NEIGHBOURHOODS</a>
+    </div>
+</div>
+<div class="" id="home">
+    <h3 class="pink-text text-center">NEIGHBOURHOODS <hr > </h3>
 </div>
 
-
-</div>
-<div>
-    Houses works
-</div>
 {% endblock %}

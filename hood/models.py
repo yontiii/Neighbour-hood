@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Neighbourhood(models.Model):
+    image = models.ImageField(upload_to='images/')
     name = models.CharField(max_length=20)
     location = models.CharField(max_length=30)
     count = models.IntegerField(default=0,blank=True)  

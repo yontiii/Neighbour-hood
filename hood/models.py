@@ -3,8 +3,6 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-
-
 # Create your models here.
 class Neighbourhood(models.Model):
     image = models.ImageField(upload_to='images/')
@@ -12,7 +10,6 @@ class Neighbourhood(models.Model):
     location = models.CharField(max_length=30)
     count = models.IntegerField(default=0,blank=True) 
     
-
     def create_neighbourhood(self):
         self.save()
       
@@ -27,8 +24,6 @@ class Neighbourhood(models.Model):
     def __str__(self):
         return self.name
 
-    
-    
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=20)

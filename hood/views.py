@@ -13,7 +13,7 @@ def index(request):
 def single_hood(request,hood_id):
     try:
        hoods = Neighbourhood.objects.get(id=hood_id) 
-       businesses = Business.objects.filter(id=hood_id)
+       businesses = Business.get_location_businesses()
     except Exception as e:
         raise Http404()               
     

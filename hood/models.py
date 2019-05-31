@@ -57,9 +57,10 @@ class Profile(models.Model):
 class Business(models.Model):
     owner = models.CharField(max_length=40)
     business = models.CharField(max_length=200)
-    user = models.ForeignKey(User,on_delete=models.CASCADE) 
     business_email = models.EmailField(max_length=200)
+    description = models.TextField(max_length=200)
     location = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE) 
+    user = models.ForeignKey(User,on_delete=models.CASCADE) 
     
     def create_business(self):
         self.save()

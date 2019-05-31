@@ -12,10 +12,7 @@ class Neighbourhood(models.Model):
     location = models.CharField(max_length=30)
     count = models.IntegerField(default=0,blank=True) 
     
-    
 
-              
-    
     def create_neighbourhood(self):
         self.save()
       
@@ -27,8 +24,6 @@ class Neighbourhood(models.Model):
         hoods = cls.objects.filter(id=id)
         return hoods  
     
-   
-
     def __str__(self):
         return self.name
 
@@ -49,8 +44,6 @@ class Profile(models.Model):
     def save_profile(sender, instance,**kwargs):
         instance.profile.save()
         
-    
-    
     def __str__(self):
         return self.title
     

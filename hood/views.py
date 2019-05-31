@@ -11,7 +11,7 @@ def index(request):
     return render(request,'index.html',{"hoods":hoods})
 
 def single_hood(request,hood_id):
-   try:
+    try:
        hoods = Neighbourhood.objects.get(id=hood_id) 
        businesses = Business.objects.filter(id=hood_id)
     

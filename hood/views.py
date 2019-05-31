@@ -10,10 +10,10 @@ def index(request):
     
     return render(request,'index.html',{"hoods":hoods})
 
-def single_hood(request,hood_id):
+def single_hood(request,hood):
     try:
-       hoods = Neighbourhood.objects.get(id=hood_id) 
-       businesses = Business.get_location_businesses()
+       hoods = Neighbourhood.objects.get(hood=location) 
+       businesses = Business.get_location_businesses(hoods.id)
     except Exception as e:
         raise Http404()               
     

@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Neighbourhood(models.Model):
     name = models.CharField(max_length=20)
     location = models.CharField(max_length=30)
-    count = models.IntegerField(default=0)  
+    count = models.IntegerField(default=0,blank=True)  
     
     def create_neighbourhood(self):
         self.save()

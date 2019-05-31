@@ -14,10 +14,7 @@ def single_hood(request,hood_id):
     try:
        hoods = Neighbourhood.objects.get(id=hood_id) 
        businesses = Business.objects.filter(id=hood_id)
-    
     except Exception as e:
-        raise Http404()
+        raise Http404()               
     
-    
-    
-    return render(request,'hood.html',)
+    return render(request,'hood.html',{"hoods":hoods,"businesses":businesses})

@@ -67,6 +67,12 @@ class Business(models.Model):
         return businesses
     
     
+    @classmethod
+    def get_location_businesses(cls,location):
+       businesses =Business.objects.filter(location__pk=location)
+       print(businesses)
+       return businesses
+    
     def __str__(self):
         return self.title
     

@@ -1,12 +1,24 @@
 {% extends 'base.html' %}
-{%  load static %}
+<style>
+#id{
+    top:50%;
+    left:50%;
+    position: absolute;
+    transform: translate(-50,-50);
+    color: red;
+    text-decoration:underline;
+}
+</style>
 {% block content %}
-<div class="index" style=" background-image: url(../static/img/land.jpg); 
-height:900px;
-width:100%;overflow: hidden;background-size: cover;background-attachment: fixed">
-  <div class="background text-center" id="header">
-    <h2 class="white-text" style="margin-top:30;">THE NEIGHBOURHOOD</h2>
-  </div>
+<div class="index view overlay" style=" background-image: url(../static/img/land.jpg); 
+height:75vh;
+width:100%;overflow: hidden;background-size:cover;background-attachment: fixed">
+<div class="mask flex rgb-black-light">
 
+</div>
+
+</div>
+<div>
+    Houses works
 </div>
 {% endblock %}

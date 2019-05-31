@@ -23,17 +23,39 @@ width:100%;overflow: hidden;background-size:cover;background-attachment: fixed">
         <br>
         <h4 class="white-text font-weight-light">know Your Hood</h4>
         <br>
-        <a href="#home" class="btn btn-info mt-10">BROWSE NEIGHBOURHOODS</a>
+        <a href="#home" class="btn btn-pink mt-10"> <i class="fas fa-fighter-jet"></i>  BROWSE NEIGHBOURHOODS</a>
     </div>
 </div>
 <div class="" id="home">
-    <h3 class="pink-text text-center">NEIGHBOURHOODS <hr > </h3>
+    <h3 class="pink-text text-center">  NEIGHBOURHOODS <hr > </h3>
 </div>
 <div class="row">
     {% for hood in hoods %}
-<div class="col-md-3">
-
+<div class="col-md-4">
+<!-- Card -->
+<div class="card-group">
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top" src="{{hood.image.url}}"  alt="Card image cap" height="300px">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+      <!-- Card content -->
+        <div class="card-body">
+      
+          <!-- Title -->
+          <h4 class="card-title">{{hood.name}}</h4>
+          <hr>
+          <!-- Text -->
+          <p class="card-text">{{hood.location}}</p>
+          <button class="btn btn-indigo btn-rounded btn-md">Read more</button>
+      
+        </div>
+      </div>
+      <!-- Card -->
 </div>
+{% endfor %}
 
 </div>
 

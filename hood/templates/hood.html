@@ -55,12 +55,30 @@
                     </div>
                     <!-- Card content -->
                     <div class="card-body">
-                        <p class="card-text">{{post.}}</p>
+                        <p class="card-text clearfix">{{post.content}}</p>
+                        <p class="pull-right">{{post.date_posted|date:"F d,Y" }}</p>
                     </div>
                 </div>
+                {% empty %}
+                <h3>There are no posts here.<a href="">Add One</a> </h3>
+                {% endfor %}
             </div>
             <div class="col-md-6">
-                BUSINESSES
+                <div class="card">
+                    <!-- Card image -->
+                    <div>
+                        <h4 class="card-title">{{business.business}}</h4>
+                    </div>
+                    <!-- Card content -->
+                    <div class="card-body">
+                        <!-- Title -->
+                        <p>{{business.description}}</p>
+                        <!-- Text -->
+                        <p class="card-text"> This business is owned by {{business.}}</p>
+        
+        
+                    </div>
+                </div>
             </div>
         </div>
     </div>

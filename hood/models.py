@@ -73,7 +73,7 @@ class Business(models.Model):
     
 class Posts(models.Model):
     title = models.CharField(max_length=200)
-    content = models.TextField(max_length=200)
+    content = models.TextField(max_length=200) 
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     
     

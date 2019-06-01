@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from .models import *
 from django.http import Http404
+from .forms import *
  
 
 # Create your views here.
@@ -10,11 +11,13 @@ def index(request):
     
     return render(request,'index.html',{"hoods":hoods})
 
-def single_hood(request,hood):
-    try:
-       hoods = Neighbourhood.objects.get(hood=location) 
-       businesses = Business.get_location_businesses(hoods.id)
-    except Exception as e:
-        raise Http404()               
+def single_hood(request,location):
+ 
+    location = Neighbourhood.objects.get(name=location) 
+    print(location.id)
+    businesses = Business.get_location_businesses(location.id)
     
-    return render(request,'hood.html',{"hoods":hoods,"businesses":businesses})
+    business_form = 
+               
+    
+    return render(request,'hood.html',{"location":location,"businesses":businesses})

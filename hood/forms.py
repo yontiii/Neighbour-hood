@@ -4,4 +4,12 @@ from .models import *
 class BusinessForm(models.ModelForm):
     class Meta:
         model = Business
-        fields = ('')
+        exclude = ['user']
+        
+class PostsForm(models.ModelForm):
+    class Meta:
+        model = Posts
+        exclude = ['user']
+        
+class 
+    

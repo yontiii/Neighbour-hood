@@ -16,7 +16,7 @@ def single_hood(request,location):
     location = Neighbourhood.objects.get(name=location) 
     print(location.id)
     businesses = Business.get_location_businesses(location.id) 
-    posts = Posts.get_location_posts(location.id)+
+    posts = Posts.get_location_posts(location.id)
     
     business_form = BusinessForm(request.POST)
     if request.method == 'POST':
@@ -42,7 +42,13 @@ def single_hood(request,location):
     
     else:
         posts_form = BusinessForm()  
+        
+    context = {"location":location,
+               "businesses":businesses,
+               'business_form':business_form,
+               "posts_form":posts_form,
+                "posts":posts
+                }
     
     
-    return render(request,'hood.html',{"location":location,"businesses":businesses,'business_form':business_form,"posts_form":posts_form
-                                       "posts":posts})
+    return render(request,'hood.html',context)

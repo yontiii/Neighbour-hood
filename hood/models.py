@@ -25,19 +25,19 @@ class Neighbourhood(models.Model):
         return self.name
 
 class Profile(models.Model):
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
     name = models.CharField(max_length=20)
     email = models.EmailField(max_length=200)
     neighborhood = models.ForeignKey(Neighbourhood,null=True) 
     
-    @receiver(post_save,sender=User)
-    def create_profile(sender,instance,created,**kwargs):
+    @receiver(post_save, sender=User)
+    def create_profile(sender, instance, created, **kwargs):
         if created:
             Profile.objects.create(user=instance)
-            
-    @receiver(post_save, sender=User)
-    def save_profile(sender, instance,**kwargs):
-        instance.profile.save()
+     
+    @receiver(post_save, sender=User) 
+    def save_profile(sender,instance,**kwargs):
+        instance.profile.save()  
         
     def __str__(self):
         return self.title
@@ -49,6 +49,7 @@ class Business(models.Model):
     description = models.TextField(max_length=200)
     location = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE) 
     user = models.ForeignKey(User,on_delete=models.CASCADE) 
+    date_posted = models.DateTimeField(auto_now_add=True)
     
     def create_business(self):
         self.save()
@@ -76,6 +77,7 @@ class Posts(models.Model):
     content = models.TextField(max_length=200) 
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     location = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
+    date_posted = models.DateTimeField(auto_now_add=True)
     
     @classmethod
     def get_location_posts(cls,location):

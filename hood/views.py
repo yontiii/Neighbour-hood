@@ -15,7 +15,8 @@ def single_hood(request,location):
  
     location = Neighbourhood.objects.get(name=location) 
     print(location.id)
-    businesses = Business.get_location_businesses(location.id)
+    businesses = Business.get_location_businesses(location.id) 
+    posts = Posts.get_location_posts(location.id)+
     
     business_form = BusinessForm(request.POST)
     if request.method == 'POST':
@@ -33,14 +34,15 @@ def single_hood(request,location):
     posts_form = PostsForm(request.POST)
     if request.method == 'POST':
         if posts_form.is_valid():
-           posts = posts_form.save(commit=False)
-        posts.user = request.user
+            posts = posts_form.save(commit=False)
+            posts.user = request.user
             posts.location = location
-            business.save()
+            posts.save()
         return redirect('single_hood',location)
     
     else:
-        business_form = BusinessForm()  
+        posts_form = BusinessForm()  
     
     
-    return render(request,'hood.html',{"location":location,"businesses":businesses,'business_form':business_form})
+    return render(request,'hood.html',{"location":location,"businesses":businesses,'business_form':business_form,"posts_form":posts_form
+                                       "posts":posts})

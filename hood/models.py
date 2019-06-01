@@ -77,6 +77,10 @@ class Posts(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     location = models.ForeignKey(Neighbourhood,on_delete=models.CASCADE)
     
+    @classmethod
+    def get_location_posts(cls,location):
+        posts = cls.objects.filter(location__pk=location)
+        return posts
     
     
     def __str__(self):

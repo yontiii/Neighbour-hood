@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
 {% block content %}
 <style>
     .main {
@@ -84,12 +85,13 @@
                     </div>
                 </div>
                 {%  empty %}
-                <P>There are no businesses here. <a href="" data-toggle="modal" data-target="#BusinessForm">Add one</a> </P>
+                <P>There are no businesses here.<button class="btn btn-outline-info" type="button" data-toggle="modal" data-target="#PostsForm">Rate</button>
+                    /P>
             </div>
             {% endfor %}
         </div>
     </div>
-</div>
+</div>  
 
                
 <div class="modal fade" id="BusinessForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -97,7 +99,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Vote</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Add Business</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -106,7 +108,7 @@
                 <div class="form animated slideInDown">
                                 <form action="/hood/{{hood.location}}" method="POST">
                                         {% csrf_token %}
-                                        {% bootstrap_form form %}
+                                        {% bootstrap_form business_form %}
                                         <button class="btn btn-outline-info modal-footer d-flex justify-content-center" type="submit">Submit <i class="fas fa-paper-plane-o ml-1"></i> </button>
                                 </form>
                         </div>
@@ -122,7 +124,7 @@ aria-hidden="true">
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header text-center">
-      <h4 class="modal-title w-100 font-weight-bold">Vote</h4>
+      <h4 class="modal-title w-100 font-weight-bold">Add Post</h4>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -131,7 +133,7 @@ aria-hidden="true">
               <div class="form animated slideInDown">
                               <form action="hood/{{hood.location}}" method="POST">
                                       {% csrf_token %}
-                                      {% bootstrap_form form %}
+                                      {% bootstrap_form posts_form %}
                                       <button class="btn btn-outline-info modal-footer d-flex justify-content-center" type="submit">Submit <i class="fas fa-paper-plane-o ml-1"></i> </button>
                               </form>
                       </div>
@@ -141,5 +143,8 @@ aria-hidden="true">
   </div>
 </div>
 </div>
+
+
+
 
 {% endblock %}

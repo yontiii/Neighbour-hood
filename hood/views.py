@@ -23,7 +23,6 @@ def single_hood(request,location):
         if business_form.is_valid():
             business = business_form.save(commit=False)
             business.user = request.user
-            business.location = location
             business.save()
         return redirect('single_hood',location)
     

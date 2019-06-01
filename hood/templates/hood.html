@@ -47,6 +47,7 @@
     <div class="col-md-8" >
         <div class="row">
             <div class="col-md-6">
+                <h2 class="black-text text-center">POSTS</h2>
                {% for post in posts %}
                <div class="card">
                     <!-- Card header -->
@@ -60,10 +61,12 @@
                     </div>
                 </div>
                 {% empty %}
-                <h3>There are no posts here.<a href="">Add One</a> </h3>
+                <p>There are no posts here.<a href="">Add One</a> </p>
                 {% endfor %}
             </div>
             <div class="col-md-6">
+                    <h2 class="black-text text-center">BUSINESSES</h2>
+                {% for business in businesses %}
                 <div class="card">
                     <!-- Card image -->
                     <div>
@@ -74,12 +77,16 @@
                         <!-- Title -->
                         <p>{{business.description}}</p>
                         <!-- Text -->
-                        <p class="card-text"> This business is owned by {{business.}}</p>
-        
-        
+                        <p class="card-text"> This business is owned by {{business.owner}}</p>
+                        <div class="card-footer">
+                                <i class="fas fa-envelope"></i>{{business.email}}
+                        </div>
                     </div>
                 </div>
+                {%  empty %}
+                <P>There are no businesses here. <a href="">Add one</a> </P>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

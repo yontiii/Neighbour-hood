@@ -29,7 +29,18 @@ def single_hood(request,location):
     else:
         business_form = BusinessForm()
         
-        
+    
+    posts_form = PostsForm(request.POST)
+    if request.method == 'POST':
+        if posts_form.is_valid():
+           posts = posts_form.save(commit=False)
+        posts.user = request.user
+            posts.location = location
+            business.save()
+        return redirect('single_hood',location)
+    
+    else:
+        business_form = BusinessForm()  
     
     
     return render(request,'hood.html',{"location":location,"businesses":businesses,'business_form':business_form})

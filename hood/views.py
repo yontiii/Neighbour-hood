@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from .models import *
 from django.http import Http404
@@ -14,7 +14,7 @@ def index(request):
 def single_hood(request,location):
  
     location = Neighbourhood.objects.get(name=location) 
-    print(location.id)
+    print(location.location)
     businesses = Business.get_location_businesses(location.id) 
     posts = Posts.get_location_posts(location.id)
     
@@ -23,6 +23,7 @@ def single_hood(request,location):
         if business_form.is_valid():
             business = business_form.save(commit=False)
             business.user = request.user
+            business.location = location
             business.save()
         return redirect('single_hood',location)
     

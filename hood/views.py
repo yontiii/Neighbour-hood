@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from .models import *
 from django.http import Http404
-from .forms import *
+from .forms import BusinessForm,PostsForm
  
 
 # Create your views here.
@@ -41,13 +41,13 @@ def single_hood(request,location):
         return redirect('single_hood',location)
     
     else:
-        posts_form = BusinessForm()  
+        posts_form = PostsForm()  
         
     context = {"location":location,
                "businesses":businesses,
                'business_form':business_form,
                "posts_form":posts_form,
-                "posts":posts
+                "posts":posts,
                 }
     
     

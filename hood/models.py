@@ -66,7 +66,7 @@ class Business(models.Model):
     @classmethod
     def get_location_businesses(cls,location):
        businesses =Business.objects.filter(location__pk=location)
-       print(businesses)
+
        return businesses
     
     def __str__(self):
@@ -81,7 +81,8 @@ class Posts(models.Model):
     
     @classmethod
     def get_location_posts(cls,location):
-        posts = cls.objects.filter(location__pk=location)
+        posts = Posts.objects.filter(location__pk=location)
+        print(posts)
         return posts
     
     

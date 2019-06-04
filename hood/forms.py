@@ -9,7 +9,7 @@ class BusinessForm(forms.ModelForm):
 class PostsForm(forms.ModelForm):
     class Meta:
         model = Posts
-        exclude = ['user']
+        exclude = ['user','location',]
         
 
     

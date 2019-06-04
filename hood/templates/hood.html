@@ -24,8 +24,6 @@
 
                 <!-- Title -->
                 <h4 class="card-title">{{location.name}}</h4>
-                {{location.id}}
-                <hr>
                 <!-- Text -->
                 <p class="card-text">{{location.location}}</p>
 
@@ -33,22 +31,9 @@
             </div>
         </div>
         <!-- Card -->
-        <div class="card">
-            <!-- Card header -->
-            <div>
-                <h4 class="pink-text text-center card-title">COMMUNITY
-                    <hr class="bg-danger">
-                </h4>
-            </div>
-            <!-- Card content -->
-            <div class="card-body">
-
-
-
-            </div>
-        </div>
     </div>
     <div class="col-md-8">
+        <h6> {{user.username}} welcome  to {{location.location}}</h6>
         <div class="row">
             <div class="col-md-6">
                 <h2 class="black-text text-center">POSTS</h2>
@@ -93,63 +78,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <h2 class="black-text text-center">BUSINESSES</h2>
-                {% for business in businesses %}
-                <div class="card">
-                    <!-- Card image -->
-                    <div>
-                        <h4 class="card-title">{{business.business}}</h4>
-                    </div>
-                    <!-- Card content -->
-                    <div class="card-body">
-                        <!-- Title -->
-                        <p>{{business.description}}</p>
-                        <!-- Text -->
-                        <p class="card-text"> This business is owned by {{business.owner}}</p>
-                        <div class="card-footer">
-                            <i class="fas fa-envelope"></i>{{business.business_email}}
-                        </div>
-                    </div>
-                </div>
-                {%  empty %}
-                <P>There are no businesses here.<button class="btn btn-outline-info" type="button" data-toggle="modal"
-                        data-target="#BusinessForm">Rate</button>
-                    /P>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-
-
-<div class="modal fade" id="BusinessForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <h4 class="modal-title w-100 font-weight-bold">Add Business</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body mx-3">
-                <div class="form animated slideInDown">
-                    <form action="/hood/{{location.name}}" method="POST">
-                        {% csrf_token %}
-                        {% bootstrap_form business_form %}
-                        <button class="btn btn-outline-info modal-footer d-flex justify-content-center"
-                            type="submit">Submit <i class="fas fa-paper-plane-o ml-1"></i> </button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-
-</div>
+           
 
 
 

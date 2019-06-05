@@ -54,6 +54,8 @@
                 {% empty %}
                 <p>There are no posts here.<a href="" data-toggle="modal" data-target="#PostsForm">Add One</a> </p>
                 {% endfor %}
+                <p>There are no posts here.<a href="" data-toggle="modal" data-target="#PostsForm">Add One</a> </p>
+                <!-- <p>There are no businesses here.<a href="" data-toggle="modal" data-target="#PostsForm">Add One</a> </p> -->
                 <div class="modal fade" id="PostsForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog-scrollable" role="document">
                         <div class="modal-content">
@@ -69,7 +71,7 @@
                                         {% csrf_token %}
                                         {% bootstrap_form posts_form %}
                                         <button class="btn btn-outline-info modal-footer d-flex justify-content-center"
-                                            type="submit">Submit <i class="fas fa-paper-plane-o ml-1"></i> </button>
+                                            type="submit">Submit  </button>
                                     </form>
                                 </div>
                             </div>
@@ -78,7 +80,55 @@
                     </div>
                 </div>
             </div>
-           
+           <div class="col-md-6">
+
+                <h2 class="black-text text-center">Business</h2>
+                {% for business in businesses %}
+                <div class="card">
+                    <!-- Card header -->
+                    <div>
+                        <h4 class="pink-text text-center card-title">{{business.owner}}
+                            <hr class="bg-danger">
+                        </h4>
+                    </div>
+                    <!-- Card content -->
+                    <div class="card-body">
+                        <p class="card-text clearfix">{{business.description}}</p>
+                        <p class="pull-right">{{post.date_posted|date:"F d,Y" }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                <p>There are no businesses here.<a href="" data-toggle="modal" data-target="#BusinessForm">Add One</a> </p>
+                {% endfor %}
+                <p>There are no businesses here.<a href="" data-toggle="modal" data-target="#BusinessForm">Add One</a> </p>
+
+                <div class="modal fade" id="BusinessForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">Add Post</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body mx-3">
+                                    <div class="form animated slideInDown">
+                                        <form action="/hood/{{location.name}}" method="POST">
+                                            {% csrf_token %}
+                                            {% bootstrap_form business_form %}
+                                            <button class="btn btn-outline-info modal-footer d-flex justify-content-center"
+                                                type="submit">Submit  </button>
+                                        </form>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
+           </div>
+
+
+            </div>
 
 
 

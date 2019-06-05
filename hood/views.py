@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
-from .models import *
+from .models import Posts,Profile,Neighbourhood,Business
 from django.http import Http404
 from .forms import BusinessForm,PostsForm
  
@@ -14,10 +14,11 @@ def index(request):
 def single_hood(request,location):
  
     location = Neighbourhood.objects.get(name=location) 
-    print(location.location)
+    print(location.id)
     businesses = Business.get_location_businesses(location.id) 
-    posts = Posts.get_location_posts(location.id)
-    
+    posts = Posts.objects.filter(id=location.id) 
+    print(posts)
+   
     business_form = BusinessForm(request.POST)
     if request.method == 'POST':
         if business_form.is_valid():
@@ -37,7 +38,7 @@ def single_hood(request,location):
             form = posts_form.save(commit=False)
             form.user = request.user
             form.location = location
-            form.save()
+            form.save_post()
         return redirect('single_hood',location)
     
     else:
@@ -51,4 +52,8 @@ def single_hood(request,location):
                 }
     
     
-    return render(request,'hood.html',context)
+    return render(request,'hood.html',context) 
+
+
+
+    

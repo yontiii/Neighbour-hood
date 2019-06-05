@@ -34,10 +34,10 @@ def single_hood(request,location):
     posts_form = PostsForm(request.POST)
     if request.method == 'POST':
         if posts_form.is_valid():
-            posts = posts_form.save(commit=False)
-            posts.user = request.user
-            posts.location = location
-            posts.save()
+            form = posts_form.save(commit=False)
+            form.user = request.user
+            form.location = location
+            form.save()
         return redirect('single_hood',location)
     
     else:

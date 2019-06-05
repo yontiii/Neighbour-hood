@@ -26,82 +26,7 @@
                 <h4 class="card-title">{{location.name}}</h4>
                 <!-- Text -->
                 <p class="card-text">{{location.location}}</p>
-
-
-            </div>
-        </div>
-        <!-- Card -->
-    </div>
-    <div class="col-md-8">
-        <h6> {{user.username}} welcome  to {{location.location}}</h6>
-        <div class="row">
-            <div class="col-md-6">
-                <h2 class="black-text text-center">POSTS</h2>
-                {% for post in posts %}
-                <div class="card">
-                    <!-- Card header -->
-                    <div>
-                        <h4 class="pink-text text-center card-title">{{post.title}}
-                            <hr class="bg-danger">
-                        </h4>
-                    </div>
-                    <!-- Card content -->
-                    <div class="card-body">
-                        <p class="card-text clearfix">{{post.content}}</p>
-                        <p class="pull-right">{{post.date_posted|date:"F d,Y" }}</p>
-                    </div>
-                </div>
-                {% empty %}
-                <p>There are no posts here.<a href="" data-toggle="modal" data-target="#PostsForm">Add One</a> </p>
-                {% endfor %}
-                <p>There are no posts here.<a href="" data-toggle="modal" data-target="#PostsForm">Add One</a> </p>
-                <!-- <p>There are no businesses here.<a href="" data-toggle="modal" data-target="#PostsForm">Add One</a> </p> -->
-                <div class="modal fade" id="PostsForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header text-center">
-                                <h4 class="modal-title w-100 font-weight-bold">Add Post</h4>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body mx-3">
-                                <div class="form animated slideInDown">
-                                    <form action="/hood/{{location.name}}" method="POST">
-                                        {% csrf_token %}
-                                        {% bootstrap_form posts_form %}
-                                        <button class="btn btn-outline-info modal-footer d-flex justify-content-center"
-                                            type="submit">Submit  </button>
-                                    </form>
-                                </div>
-                            </div>
-                
-                        </div>
-                    </div>
-                </div>
-            </div>
-           <div class="col-md-6">
-
-                <h2 class="black-text text-center">Business</h2>
-                {% for business in businesses %}
-                <div class="card">
-                    <!-- Card header -->
-                    <div>
-                        <h4 class="pink-text text-center card-title">{{business.owner}}
-                            <hr class="bg-danger">
-                        </h4>
-                    </div>
-                    <!-- Card content -->
-                    <div class="card-body">
-                        <p class="card-text clearfix">{{business.description}}</p>
-                        <p class="pull-right">{{post.date_posted|date:"F d,Y" }}</p>
-                    </div>
-                </div>
-                {% empty %}
-                <p>There are no businesses here.<a href="" data-toggle="modal" data-target="#BusinessForm">Add One</a> </p>
-                {% endfor %}
-                <p>There are no businesses here.<a href="" data-toggle="modal" data-target="#BusinessForm">Add One</a> </p>
-
+                <button class="btn btn-pink" type="button" data-toggle="modal" data-target="#BusinessForm">Add A Business</button>
                 <div class="modal fade" id="BusinessForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog-scrollable" role="document">
                             <div class="modal-content">
@@ -125,6 +50,69 @@
                             </div>
                         </div>
                     </div>
+               
+        
+
+            </div>
+        </div>
+        <!-- Card -->
+    </div>
+
+           <div class="col-md-8">
+
+
+                <h2 class="black-text text-center animated fadeInRight" data-wow-delay="500s">Businesses</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                            {% for business in businesses %}
+                            <div class="card">
+                                <!-- Card header -->
+                                <div>
+                                    <h4 class="pink-text pull-left card-title"> {{business.business}}
+                                        <hr class="bg-danger">
+                                    </h4>
+                                </div>
+                                <!-- Card content -->
+                                <div class="card-body">
+                                    <p class="card-text clearfix">{{business.description}}</p>
+                                    <p class="pull-right"> Owner :{{business.owner}}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <p class="black-text pull-right">
+                                        Email : {{business.business_email}}
+                                    </p>
+                                </div>
+                            </div>
+                            {% empty %}
+                            <p>There are no businesses here.<a href="" data-toggle="modal" data-target="#BusinessForm">Add One</a> </p>
+                            {% endfor %}
+                    </div>
+                </div>
+              
+                <div class="modal fade" id="BusinessForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">Add Post</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body mx-3">
+                                    <div class="form animated slideInDown">
+                                        <form action="/hood/{{location.name}}" method="POST">
+                                            {% csrf_token %}
+                                            {% bootstrap_form business_form %}
+                                            <button class="btn btn-outline-info modal-footer d-flex justify-content-center"
+                                                type="submit">Submit  </button>
+                                        </form>
+                                    </div>
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
+                
            </div>
 
 
